@@ -29,7 +29,6 @@
               (setf res (append res (list r)))
               (if (not (and (eq (integerp r) T) (eq (oddp r) T)))
                   (setf ce T)))))
-    
         (if (eq ce NIL)
             (return-from modify (sum res))
           (return-from modify res))))
