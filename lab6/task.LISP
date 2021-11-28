@@ -58,3 +58,4 @@
 (defparameter s (read))
 (print (with-output-to-string (*standard-output*) (do-spec-nums (i (elt s 0) (elt s 1)) (princ i)) (do-spec-nums (i (elt s 2) (elt s 3)) (princ i))))
 ;;;; !!! не удаляйте и не изменяйте этот код, он необходим для проверки !!! ;;;;
+
