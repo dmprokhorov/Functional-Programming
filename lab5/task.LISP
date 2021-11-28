@@ -96,4 +96,3 @@
 (get-prior data) 
 (makunbound 'data)
 
-
