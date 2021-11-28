@@ -37,3 +37,4 @@
 (defparameter lst (read))
 (print (modify lst))
 (makunbound 'lst)
+
