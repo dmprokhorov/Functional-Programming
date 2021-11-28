@@ -26,8 +26,7 @@
 (defun check-and-transforming (n)
   (if (not (listp n))
       "[bad phone]"
-  (let ((lst (mapcan #'(lambda (x) (if (string= "" (remove-if #'digit-char-p x)) (list x) NIL)) (mapcan #'(lambda (x) (if (not (stringp x)) (list (write-to-string x)) 
-                                                                                                                          (list x))) n))))
+  (let ((lst (mapcan #'(lambda (x) (if (string= "" (remove-if #'digit-char-p x)) (list x) NIL)) (mapcan #'(lambda (x) (if (not (stringp x)) (list (write-to-string x)) (list x))) n))))
     (if (or (not (eq (length lst) 3)) (> (reduce #'(lambda(s x) (+ s (length x))) lst :initial-value 0) 15))
        "[bad phone]"
       (let ((thd (third lst)))
@@ -63,8 +62,7 @@
                     (if (char-equal sign #\Space)
                         (setf tilda NIL))
                     (let ((previous-sign (aref s (- x 1))))
-                      (if (and (check-symbol sign #\c #\d #\R #\b #\o #\x #\f #\e #\g #\$ #\a #\r #\s #\w #\*) (or (check-symbol previous-sign sign #\: #\@) (not (null 
-                      (digit-char-p previous-sign)))))
+                      (if (and (check-symbol sign #\c #\d #\R #\b #\o #\x #\f #\e #\g #\$ #\a #\r #\s #\w #\*) (or (check-symbol previous-sign sign #\: #\@) (not (null (digit-char-p previous-sign)))))
                           (setf tilda NIL)))))
               (if (char-equal #\~ sign)
                   (setf tilda T)))))
@@ -90,10 +88,11 @@
           (progn
             (setf e (search "~z" str))
             (setf before (subseq str 0 e))
-            (setf number (- (count #\~ before) (count-directives-without-arguments before "~%" "~&" "~|" "~_" "~:_" "~@_" "~:@_" "~<" "~>" "~i" "~:i" "~t" "~:t" "~@t" 
-                "~:@t" "~?" "~@?" "~*" "~:*" "~@*" "~[" "~:[" "~@[" "~;" "~:;" "~{" "~}" "~(" "~:(" "~@(" "~:@(" "~)") (count-directives-with-optional-numbers before)))
+            (setf number (- (count #\~ before) (count-directives-without-arguments before "~%" "~&" "~|" "~_" "~:_" "~@_" "~:@_" "~<" "~>" "~i" "~:i" "~t" "~:t" "~@t" "~:@t" "~?" "~@?" "~*" "~:*" "~@*" "~[" 
+                                                                                   "~:[" "~@[" "~;" "~:;" "~{" "~}" "~(" "~:(" "~@(" "~:@(" "~)") (count-directives-with-optional-numbers before)))
             (if (null numargs)
                 (setf numargs (list number))
               (setf numargs (append numargs (list number))))
             (setf (aref str (+ e 1)) #\a)))
     (apply #'format *out-stream* str (change-arguments numargs args))))
+
