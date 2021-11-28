@@ -91,7 +91,7 @@
             (setf e (search "~z" str))
             (setf before (subseq str 0 e))
             (setf number (- (count #\~ before) (count-directives-without-arguments before "~%" "~&" "~|" "~_" "~:_" "~@_" "~:@_" "~<" "~>" "~i" "~:i" "~t" "~:t" "~@t" 
-                   "~:@t" "~?" "~@?" "~*" "~:*" "~@*" "~[" "~:[" "~@[" "~;" "~:;" "~{" "~}" "~(" "~:(" "~@(" "~:@(" "~)") (count-directives-with-optional-numbers before)))
+                "~:@t" "~?" "~@?" "~*" "~:*" "~@*" "~[" "~:[" "~@[" "~;" "~:;" "~{" "~}" "~(" "~:(" "~@(" "~:@(" "~)") (count-directives-with-optional-numbers before)))
             (if (null numargs)
                 (setf numargs (list number))
               (setf numargs (append numargs (list number))))
