@@ -24,3 +24,4 @@
             (byte 4 (* i 4)) x)))
 (print x)
 (makunbound 'x)
+s
