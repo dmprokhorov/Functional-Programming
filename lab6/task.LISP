@@ -37,7 +37,6 @@
                      collect `(,n ,g)))
          ,@body))))
 
-
 (defun specp (n)
   (setf n (abs n))
   (let ((cnt 0))
