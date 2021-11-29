@@ -13,7 +13,7 @@
 
 (defun sum (lst)
   (cond ((null lst) 0)                    
-        (t (+ (car lst) (sum (cdr lst))))))
+        (T (+ (car lst) (sum (cdr lst))))))
 
 (defun modify (lst &aux (ce NIL) (res '()) (r '()))
   (if lst
